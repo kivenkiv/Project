@@ -25,7 +25,7 @@ def main(args):
     # Define model, Loss, and optimizer
     model = net() ###
     criterion = nn.CrossEntropyLoss()###
-    optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9)###
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9)###
 
     # Train the models
     total_step = len(data_loader)
@@ -39,6 +39,7 @@ def main(args):
 
             # Forward, backward and optimize
             outputs = model(images)
+            model.to('cuda')
             loss = criterion(outputs, labels)
             model.zero_grad()
             loss.backward()
