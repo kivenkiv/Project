@@ -26,7 +26,7 @@ class net(nn.Module):
         features = self.bn(self.linear(features))
         print(features.shape)
         print(features.type)
-        features.type(torch.Scalar)
+        features.type(torch.Long)
         return features
 
 
