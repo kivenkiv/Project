@@ -24,7 +24,7 @@ class net(nn.Module):
             features = self.resnet(images)
         features = features.reshape(features.size(0), -1)
         features = self.bn(self.linear(features))
-        print(feature.shape)
+        print(features.shape)
         return features
 
 
