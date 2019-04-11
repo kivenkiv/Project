@@ -21,6 +21,7 @@ class net(nn.Module):
         """Extract feature vectors from input images."""
         with torch.no_grad():
             features = self.resnet(images)
+            print(feature.shape)
         return features
 
 
