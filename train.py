@@ -20,7 +20,7 @@ def main(args):
         os.makedirs(args.model_path)
 
     test_dataset = a2d_dataset.A2DDataset(train_cfg, args.dataset_path)
-    data_loader = DataLoader(test_dataset, batch_size=4, shuffle=True, num_workers=4) # you can make changes
+    data_loader = DataLoader(test_dataset, batch_size=676, shuffle=True, num_workers=4) # you can make changes
 
     # Define model, Loss, and optimizer
     model = net() ###
