@@ -15,7 +15,7 @@ class net(nn.Module):
         resnet = models.resnet152(pretrained=True)
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
         self.resnet = nn.Sequential(*modules)
-        self.linear = nn.Linear(resnet.fc.in_features, 44)
+        self.linear = nn.Linear(resnet.fc.in_features, 43)
         self.bn = nn.BatchNorm1d(44, momentum=0.01)
         
     def forward(self, images):
