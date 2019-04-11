@@ -38,6 +38,7 @@ def main(args):
             images = data[0].to(device)
             labels = data[1].type(torch.FloatTensor).to(device)
             print(labels.shape)
+            print(labels.type)
 
             # Forward, backward and optimize
             outputs = model(images)
