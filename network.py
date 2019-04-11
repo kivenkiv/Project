@@ -12,7 +12,7 @@ class net(nn.Module):
     def __init__(self):
         """Load the pretrained ResNet-152 and replace top fc layer."""
         super(net, self).__init__()
-        self.resnet = models.resnet152(pretrained=False)
+        self.resnet = models.resnet152(pretrained=True)
         
     def forward(self, images):
         """Extract feature vectors from input images."""
