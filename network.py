@@ -16,7 +16,7 @@ class net(nn.Module):
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
         self.resnet = nn.Sequential(*modules)
         self.linear = nn.Linear(resnet.fc.in_features, 43)
-        self.bn = nn.BatchNorm1d(44, momentum=0.01)
+        self.bn = nn.BatchNorm1d(43, momentum=0.01)
         
     def forward(self, images):
         """Extract feature vectors from input images."""
