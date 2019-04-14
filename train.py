@@ -25,7 +25,7 @@ def main(args):
     # Define model, Loss, and optimizer
     model = net() ###
     model.to(device)
-    criterion = nn.CrossEntropyLoss()###
+    criterion = nn.MultiLabelSoftMarginLoss(###
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)###
 
     # Train the models
