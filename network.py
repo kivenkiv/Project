@@ -24,8 +24,6 @@ class net(nn.Module):
             features = self.resnet(images)
         features = features.reshape(features.size(0), -1)
         features = self.bn(self.linear(features))
-        print(features.shape)
-        print(features.type)
         features.type(torch.FloatTensor)
         return features
 
