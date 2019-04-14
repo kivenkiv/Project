@@ -20,7 +20,7 @@ def main(args):
         os.makedirs(args.model_path)
 
     test_dataset = a2d_dataset.A2DDataset(train_cfg, args.dataset_path)
-    data_loader = DataLoader(test_dataset, batch_size=32, shuffle=True, num_workers=4) # you can make changes
+    data_loader = DataLoader(test_dataset, batch_size=100, shuffle=True, num_workers=10) # you can make changes
 
     # Define model, Loss, and optimizer
     model = net() ###
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     parser.add_argument('--save_step', type=int, default=1000, help='step size for saving trained models')
     parser.add_argument('--num_cls', type=int, default=43)
     # Model parameters
-    parser.add_argument('--num_epochs', type=int, default=1)
+    parser.add_argument('--num_epochs', type=int, default=10)
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--num_workers', type=int, default=2)
     args = parser.parse_args()
