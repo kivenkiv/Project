@@ -63,7 +63,7 @@ if __name__ == '__main__':
     parser.add_argument('--model_path', type=str, default='models/', help='path for saving trained models')
     parser.add_argument('--dataset_path', type=str, default='../A2D', help='a2d dataset')
     parser.add_argument('--log_step', type=int, default=10, help='step size for prining log info')
-    parser.add_argument('--save_step', type=int, default=1000, help='step size for saving trained models')
+    parser.add_argument('--save_step', type=int, default=100, help='step size for saving trained models')
     parser.add_argument('--num_cls', type=int, default=43)
     # Model parameters
     parser.add_argument('--num_epochs', type=int, default=45)
