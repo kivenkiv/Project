@@ -34,8 +34,8 @@ def main(args):
     with torch.no_grad():
         for batch_idx, data in enumerate(data_loader):
             # mini-batch
-            images = data[0].to(device)
-            labels = data[1].type(torch.FloatTensor).to(device)
+            images = data[0]
+            labels = data[1].type(torch.FloatTensor)
             output = model(images).cpu().detach().numpy()
             target = labels.cpu().detach().numpy()
             output[output >= 0.5] = 1
