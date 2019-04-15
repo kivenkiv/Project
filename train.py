@@ -53,6 +53,7 @@ def main(args):
 
             # Save the model checkpoints
             if (i + 1) % args.save_step == 0:
+                print('saved')
                 torch.save(model.state_dict(), os.path.join(
                     args.model_path, 'net.ckpt'))
         t2 = time.time()
