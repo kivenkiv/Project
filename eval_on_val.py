@@ -24,7 +24,7 @@ def main(args):
     data_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=1)
     
     # define load your model here
-    model = net() #
+    model = net().to(device) #
     model.load_state_dict(torch.load(os.path.join(args.model_path, 'net.ckpt')))
     
     X = np.zeros((data_loader.__len__(), args.num_cls))
@@ -34,8 +34,8 @@ def main(args):
     with torch.no_grad():
         for batch_idx, data in enumerate(data_loader):
             # mini-batch
-            images = data[0]
-            labels = data[1].type(torch.FloatTensor)
+            images = data[0].to(device)
+            labels = data[1].type(torch.FloatTensor).to(device)
             output = model(images).cpu().detach().numpy()
             target = labels.cpu().detach().numpy()
             output[output >= 0.5] = 1
