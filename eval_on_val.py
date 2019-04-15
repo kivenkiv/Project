@@ -20,7 +20,7 @@ def main(args):
     if not os.path.exists(args.model_path):
         os.makedirs(args.model_path)
 
-    test_dataset = a2d_dataset.A2DDataset(test_cfg, args.dataset_path)
+    test_dataset = a2d_dataset.A2DDataset(val_cfg, args.dataset_path)
     data_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=1)
     
     # define load your model here
