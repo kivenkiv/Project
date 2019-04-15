@@ -10,7 +10,6 @@ class net(nn.Module):
     # define your model
     ####
     def __init__(self):
-        """Load the pretrained ResNet-152 and replace top fc layer."""
         super(net, self).__init__()
         resnet = models.resnet152(pretrained=True)
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
@@ -22,7 +21,7 @@ class net(nn.Module):
         """Extract feature vectors from input images."""
         with torch.no_grad():
             features = self.resnet(images.cuda())
-        features = features.reshape(features.size(0), -1)
+        features = features.reshape(features.size(0), -1).cuda()
         features = self.bn(self.linear(features))
         features.type(torch.FloatTensor).cuda()
         return features
