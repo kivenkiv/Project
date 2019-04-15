@@ -36,8 +36,8 @@ def main(args):
             # mini-batch
             images = data[0].to(device)
             labels = data[1].type(torch.FloatTensor).to(device)
-            output = model(images).cpu().detach().numpy()
-            target = labels.cpu().detach().numpy()
+            output = model(images).cuda().detach().numpy()
+            target = labels.cuda().detach().numpy()
             output[output >= 0.5] = 1
             output[output < 0.5] = 0
             X[batch_idx, :] = output
