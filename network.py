@@ -11,7 +11,7 @@ class net(nn.Module):
     ####
     def __init__(self):
         super(net, self).__init__()
-        resnet = models.resnet50(pretrained=True)
+        resnet = models.vgg16()
         modules = list(resnet.children())[:-1]      # delete the last fc layer.
         self.resnet = nn.Sequential(*modules)
         self.linear = nn.Linear(resnet.fc.in_features, 43)
