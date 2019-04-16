@@ -20,12 +20,12 @@ def main(args):
         os.makedirs(args.model_path)
 
     test_dataset = a2d_dataset.A2DDataset(train_cfg, args.dataset_path)
-    data_loader = DataLoader(test_dataset, batch_size=16, shuffle=True, num_workers=2) # you can make changes
+    data_loader = DataLoader(test_dataset, batch_size=4, shuffle=True, num_workers=2) # you can make changes
 
     # Define model, Loss, and optimizer
     model = net() ###
     model.to(device)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.MultiLabelSoftMarginLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)###
 
     # Train the models
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     parser.add_argument('--model_path', type=str, default='models/', help='path for saving trained models')
     parser.add_argument('--dataset_path', type=str, default='../A2D', help='a2d dataset')
     parser.add_argument('--log_step', type=int, default=10, help='step size for prining log info')
-    parser.add_argument('--save_step', type=int, default=200, help='step size for saving trained models')
+    parser.add_argument('--save_step', type=int, default=1000, help='step size for saving trained models')
     parser.add_argument('--num_cls', type=int, default=43)
     # Model parameters
     parser.add_argument('--num_epochs', type=int, default=45)
