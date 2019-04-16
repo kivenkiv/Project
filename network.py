@@ -11,10 +11,10 @@ class net(nn.Module):
     ####
     def __init__(self):
         super(net, self).__init__()
-        resnet = models.vgg16()
-        modules = list(resnet.children())[:-1]      # delete the last fc layer.
+        vgg16 = models.vgg16(pretrained=True)
+        modules = list(vgg16.children())[:-1]      # delete the last fc layer.
         self.resnet = nn.Sequential(*modules)
-        self.linear = nn.Linear(resnet.fc.in_features, 43)
+        self.linear = nn.Linear(vgg16.fc.in_features, 43)
         self.bn = nn.BatchNorm1d(43, momentum=0.01)
         
     def forward(self, images):
