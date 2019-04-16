@@ -24,6 +24,7 @@ class net(nn.Module):
         features = features.reshape(features.size(0), -1).cuda()
         features = self.bn(self.linear(features))
         features.type(torch.FloatTensor).cuda()
+        features=nn.MultiLabelBinarizer(features)
         return features
 
 
