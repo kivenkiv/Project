@@ -40,7 +40,7 @@ def main(args):
    
 
             # Forward, backward and optimize
-            outputs = model(images)
+            outputs = model(images).type(torch.FloatTensor)
             loss = criterion(outputs, labels)
             model.zero_grad()
             loss.backward()
