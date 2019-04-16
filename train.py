@@ -25,7 +25,7 @@ def main(args):
     # Define model, Loss, and optimizer
     model = net() ###
     model.to(device)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.NLLLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)###
 
     # Train the models
@@ -40,7 +40,7 @@ def main(args):
    
 
             # Forward, backward and optimize
-            outputs = model(images).type(torch.FloatTensor).to(device)
+            outputs = model(images)
             loss = criterion(outputs, labels)
             model.zero_grad()
             loss.backward()
