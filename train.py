@@ -26,7 +26,7 @@ def main(args):
     model = net() ###
     model.to(device)
     criterion = nn.MultiLabelSoftMarginLoss()###
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)###
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)###
 
     # Train the models
     total_step = len(data_loader)
